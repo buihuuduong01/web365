@@ -1,7 +1,7 @@
 <div class="ps-my-account">
     <div class="container">
         <form class="ps-form--account ps-tab-root" method="POST"
-              action="{{ route('customer.register.post') }}">
+              action="{{ route('/RegisterApi') }}">
             @csrf
             <div class="ps-form__content">
                 <h4>{{ __('Đăng ký tài khoản') }}</h4>

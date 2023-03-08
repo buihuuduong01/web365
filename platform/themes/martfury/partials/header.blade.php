@@ -114,10 +114,10 @@
                                 @if (auth('customer')->check())
                                     <a href="{{ route('customer.overview') }}"
                                        class="customer-name">{{ auth('customer')->user()->name }}</a>
-                                    <a href="{{ route('customer.logout') }}">{{ __('Logout') }}</a>
+                                    <a href="{{ route('customer.logout') }}">{{ __('Đăng Xuất') }}</a>
                                 @else
-                                    <a href="{{ route('customer.login') }}">{{ __('Login') }}</a><a
-                                        href="{{ route('customer.register') }}">{{ __('Register') }}</a>
+                                    <a href="{{ route('customer.login') }}">{{ __('Đăng Nhập') }}</a><a
+                                        href="{{ route('customer.register') }}">{{ __('Đăng Ký') }}</a>
                                 @endif
                             </div>
                         </div>

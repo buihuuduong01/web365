@@ -70,4 +70,6 @@ Route::group(['namespace' => 'Theme\Martfury\Http\Controllers', 'middleware' => 
         Route::get('{slug?}' . config('core.base.general.public_single_ending_url'), 'MartfuryController@getView')
             ->name('public.single');
     });
+
+
 });

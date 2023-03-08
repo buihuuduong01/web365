@@ -3,10 +3,10 @@
         <div class="ps-footer__widgets">
             @if (theme_option('hotline') || theme_option('address') || theme_option('email') || theme_option('social-name-1'))
                 <aside class="widget widget_footer widget_contact-us">
-                    <h4 class="widget-title">{{ __('Contact us') }}</h4>
+                    <h4 class="widget-title">{{ __('Liên hệ') }}</h4>
                     <div class="widget_content">
                         @if (theme_option('hotline'))
-                            <p>{{ __('Call us 24/7') }}</p>
+                            <p>{{ __('Hỗ trợ 24/7') }}</p>
                             <h3>{{ theme_option('hotline') }}</h3>
                         @endif
                         <p>{{ theme_option('address') }} <br><a

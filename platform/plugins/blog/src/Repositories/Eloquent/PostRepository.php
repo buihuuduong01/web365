@@ -253,5 +253,6 @@ class PostRepository extends RepositoriesAbstract implements PostInterface
             ->orderBy($orderBy, $order);
 
         return $this->applyBeforeExecuteQuery($data)->paginate((int)$filters['per_page']);
+
     }
 }

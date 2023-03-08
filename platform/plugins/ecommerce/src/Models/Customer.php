@@ -29,6 +29,7 @@ use RvMedia;
 use MacroableModels;
 use Illuminate\Support\Str;
 
+
 class Customer extends BaseModel implements
     AuthenticatableContract,
     AuthorizableContract,

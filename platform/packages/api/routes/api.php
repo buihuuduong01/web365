@@ -19,4 +19,6 @@ Route::group([
         Route::post('update/avatar', 'ProfileController@updateAvatar');
         Route::put('update/password', 'ProfileController@updatePassword');
     });
+
+
 });

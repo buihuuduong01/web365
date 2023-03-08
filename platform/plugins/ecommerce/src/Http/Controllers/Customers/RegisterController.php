@@ -1,7 +1,6 @@
 <?php
 
 namespace Botble\Ecommerce\Http\Controllers\Customers;
-
 use App\Http\Controllers\Controller;
 use BaseHelper;
 use Botble\ACL\Traits\RegistersUsers;
@@ -17,22 +16,26 @@ use SeoHelper;
 use Theme;
 use URL;
 
+
+
 class RegisterController extends Controller
 {
+
     use RegistersUsers;
 
     protected string $redirectTo = '/';
 
     protected CustomerInterface $customerRepository;
-
+//  __construct nhận đối tượng CustomerInterface
     public function __construct(CustomerInterface $customerRepository)
     {
         $this->middleware('customer.guest');
         $this->customerRepository = $customerRepository;
     }
 
-    public function showRegistrationForm()
+    public function showRegistrationForm() // hiển thị biểu mẫu đăng ký cho user
     {
+
         SeoHelper::setTitle(__('Register'));
 
         Theme::breadcrumb()->add(__('Home'), route('public.index'))->add(__('Register'), route('customer.register'));
@@ -49,6 +52,8 @@ class RegisterController extends Controller
 
     public function register(Request $request, BaseHttpResponse $response)
     {
+        // validator trả về validator xác thực thông tin khách hàng
+
         $this->validator($request->input())->validate();
 
         do_action('customer_register_validation', $request);
@@ -68,7 +73,7 @@ class RegisterController extends Controller
         $this->customerRepository->createOrUpdate($customer);
         $this->guard()->login($customer);
 
-        return $response->setNextUrl($this->redirectPath())->setMessage(__('Registered successfully!'));
+        return $response->setNextUrl($this->redirectPath())->setMessage(__('đăng ký thành công!'));
     }
 
     protected function validator(array $data)
@@ -76,8 +81,9 @@ class RegisterController extends Controller
         $rules = [
             'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:ec_customers',
-            'password' => 'required|min:6|confirmed',
+            'password' => 'required|min:1|confirmed',
         ];
+
 
         if (is_plugin_active('captcha') && setting('enable_captcha') && get_ecommerce_setting(
             'enable_recaptcha_in_register_page',
@@ -106,6 +112,7 @@ class RegisterController extends Controller
 
     protected function create(array $data)
     {
+        // tạo thông tin khách hàng mới
         return $this->customerRepository->create([
             'name' => BaseHelper::clean($data['name']),
             'email' => BaseHelper::clean($data['email']),

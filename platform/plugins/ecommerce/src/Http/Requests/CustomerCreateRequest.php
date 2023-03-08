@@ -11,7 +11,7 @@ class CustomerCreateRequest extends Request
         return [
             'name' => 'required|max:120|min:2',
             'email' => 'required|max:60|min:6|email|unique:ec_customers',
-            'password' => 'required|min:6',
+            'password' => 'required|min:1',
             'password_confirmation' => 'required|same:password',
         ];
     }
